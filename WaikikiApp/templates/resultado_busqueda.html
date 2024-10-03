@@ -1,0 +1,28 @@
+{% extends "padre.html" %}
+
+
+{% block contenido %}
+
+<p>Estamos buscando productos con precio de: {{precio}}</p>
+
+
+{% if productos %}
+
+<ul>
+    {% for producto in productos %}
+
+<li>{{producto.nombre}} - {{producto.precio}}</li>
+
+{% endfor %}
+</ul>    
+{% else %}
+<p>No se encontraron productos con los datos de busqueda</p>
+{% endif %}
+    
+
+
+
+    
+    
+{% endblock contenido %}
+    

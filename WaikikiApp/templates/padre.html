@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="">
+    <link href="{% static 'css/style.css' %}" rel="stylesheet" />
+</head>
+<body>
+
+    <header class='header'>
+
+    <div class='header-div'>
+
+        <h1 class='title'>Parador Waikiki</h1>
+        <p class='title-text'>Los mejores desayunos y meriendas</p>
+    </div>
+        
+        <nav>
+            <ul class='navigation'>
+                <li>
+                    <a href="{% url 'inicio' %}">Inicio</a>
+                </li>
+                <li>
+                    <a href="{% url 'agg' %}">Menu</a>
+                </li>
+                <li>
+                    <a href="{% url 'busqueda-producto' %}">Formulario</a>
+                </li>
+            </ul>
+        </nav>
+
+    </header>
+
+
+
+ {% block contenido %}
+
+    
+{% endblock contenido %}
+    
+
+
+
+    
+   
+<footer>
+
+
+<p>Seguinos en nuestras redes!</p>
+<a href="#">Instagram</a>
+<a href="#">TikTok</a>
+    
+</footer>
+
+
+</body>
+</html>

@@ -1,0 +1,13 @@
+{% extends "padre.html" %}
+    
+
+{% block contenido %}
+    
+<form action="{% url 'buscar-producto' %}" method="get">
+    <p>Precio: <input type="text" name="precio"> </p>
+    <button type="submit"> Buscar </button>
+</form>
+
+{% endblock contenido %}
+    
+

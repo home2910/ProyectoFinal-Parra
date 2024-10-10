@@ -4,8 +4,8 @@
     {% load static %}
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="">
+    <title>Waikiki App</title>
+    <link rel="shortcut icon" href="../static/assets/Waikiki.ico" type="image/x-icon">
     <link href="{% static 'css/style.css' %}" rel="stylesheet" />
 </head>
 <body>
@@ -20,14 +20,17 @@
         
         <nav>
             <ul class='navigation'>
-                <li>
-                    <a href="{% url 'inicio' %}">Inicio</a>
+                <li class='li'>
+                    <a class='a' href="{% url 'inicio' %}">Inicio</a>
                 </li>
-                <li>
-                    <a href="{% url 'agg' %}">Menu</a>
+                <li class='li'>
+                    <a class='a' href="{% url 'leer-producto' %}">Productos</a>
                 </li>
-                <li>
-                    <a href="{% url 'busqueda-producto' %}">Formulario</a>
+                <li class='li'>
+                    <a class='a' href="{% url 'agg' %}">Agregar Producto</a>
+                </li>
+                <li class='li'>
+                    <a class='a' href="{% url 'busqueda-producto' %}">Buscar Producto</a>
                 </li>
             </ul>
         </nav>

@@ -32,31 +32,69 @@
     height: 100%;
 }
 
-nav ul li{
+/* li & a style */
+ 
+.li{
 list-style: none;
 }
 
-nav ul li a{
+.a{
     text-decoration: none;
     color: black;
 }
 
-nav ul li a:hover{
+.a:hover{
     transition: all;
     text-decoration: none;
     color: white;
 }
 
+/* main a style */
 
-/* Inicio Content */
+.a-main{
+    text-decoration: none;
+    color: black;
+    background-color: #0001;
+    padding: 5px;
+    border: 2px solid black;
+    border-radius: 10px ;
+}
+
+.a-main:hover{
+    transition: all;
+    text-decoration: none;
+    color: white;
+    background-color: #0005;
+}
 
 
-.inicio-container{
+/* Estilo form */
+.form{
+    display: flex;
+    width: 300px;
+    flex-direction: column;
+    align-items: center;
+    justify-items: center;
+    gap: 5px;
+    background-color: #0001;
+    border-radius: 10px;
+    padding: 10px;
+    margin-top: 10px;
+    text-align: center;
+ }
+
+
+
+/* Agregar Producto */
+
+
+.add-product-container{
     height: 80vh;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
+    margin-top: 10px; 
 }
 
 .inicio-header{
@@ -64,29 +102,38 @@ nav ul li a:hover{
     margin-bottom: 20px;
 }
 
-/* Menu Content */
-.product-card{
-border: 1px solid black;
-border-radius: 10px;
-width: 250px;
-height: 250px;
-display: flex;
-flex-direction: column;
-align-items: center;
+/* Busqueda Producto */
+
+.main-product-search{
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    margin-top: 10px;    
 }
 
+/* Resultado Busqueda */
 
-.search-form{
-   display: flex;
-   width: 300px;
-   flex-direction: column;
-   align-items: center;
-   justify-items: center;
-   gap: 5px;
-   background-color: #0001;
-   border-radius: 10px;
-   padding: 10px;
+.search-result-container{
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    margin-top: 10px;
 }
+
+/* Leer Productos */
+.read-products-container{
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    margin-top: 10px;
+}
+
 
 .input-div{
     display: flex;

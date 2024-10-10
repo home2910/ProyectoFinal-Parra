@@ -1,0 +1,30 @@
+{% extends "padre.html" %}
+
+
+{% block contenido %}
+
+<main class='read-products-container'>
+
+    <section style='margin-bottom: 10px'>
+
+        {% for p in productos %}
+        
+        <li>{{p}}</li>
+        <button>
+
+            <a style='text-decoration:none; color:black ;' href="{% url 'eliminar-producto' p.nombre %}">Eliminar</a>
+        </button>
+        <button>
+            <a style='text-decoration:none; color:black ;' href="{% url 'editar-producto' p.nombre %}">Editar</a>
+        </button>
+        
+        {% endfor %}
+    </section>
+       
+    <a class='a-main' href="{% url 'agg' %}"> Agregar otro producto</a>
+
+</main>
+
+
+
+{% endblock contenido %}

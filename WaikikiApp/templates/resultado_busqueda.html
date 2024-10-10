@@ -3,21 +3,24 @@
 
 {% block contenido %}
 
-<p>Estamos buscando productos con precio de: {{precio}}</p>
+<main class='search-result-container'>
 
-
-{% if productos %}
-
-<ul>
-    {% for producto in productos %}
-
-<li>{{producto.nombre}} - {{producto.precio}}</li>
-
-{% endfor %}
-</ul>    
-{% else %}
-<p>No se encontraron productos con los datos de busqueda</p>
-{% endif %}
+    <p>Estamos buscando productos con precio de: {{precio}}</p>
+    
+    
+    {% if productos %}
+    
+    <ul style="margin-top: 10px;">
+        {% for producto in productos %}
+        
+        <li>{{producto.nombre}}: ${{producto.precio}}</li>
+        
+        {% endfor %}
+    </ul>    
+    {% else %}
+    <p>No se encontraron productos con los datos de busqueda</p>
+    {% endif %}
+</main>
     
 
 

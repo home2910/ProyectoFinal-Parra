@@ -1,0 +1,19 @@
+{% extends "padre.html" %}
+
+
+{% block contenido %}
+
+<h2>Borrar Producto</h2>
+
+<form action="{% url 'eliminar-producto' producto.pk %}" method='post'>
+{% csrf_token %}
+<h4>Estas seguro que desea borrar el producto {{producto.nombre}} - {{producto.precio}}?</h4>
+
+<input type="submit" value="Eliminar">
+
+</form>
+    
+{% endblock contenido %}
+    
+    
+

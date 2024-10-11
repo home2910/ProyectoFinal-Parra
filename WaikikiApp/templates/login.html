@@ -1,0 +1,22 @@
+{% extends "padre.html" %}
+
+
+{% block contenido %}
+    
+<form class='login-form' action="" method='POST'>
+
+{% csrf_token %}
+
+{{form.as_p}}
+
+<button class='button' type="submit">Iniciar Sesion</button>
+
+</form>
+
+{% endblock contenido %}
+    
+
+
+
+
+

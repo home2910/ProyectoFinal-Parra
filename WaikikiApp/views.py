@@ -1,35 +1,28 @@
-from django.http import HttpResponse
+from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth import login as auth_login, authenticate
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.views.generic import ListView, CreateView, UpdateView, DeleteView
+from django.urls import reverse_lazy
+
 from .models import Producto
 from django.shortcuts import render
-from .forms import ProductForm
+from .forms import UserRegistrationForm
 
 # Create your views here.
 
+@login_required
 def inicio(req):
 
     return render(req, 'inicio.html', {})
 
 
-def add_form(req):
+class ProductCreateView(LoginRequiredMixin ,CreateView):
+  model = Producto
+  template_name = 'add_form.html'
+  success_url = reverse_lazy('leer-producto')
+  fields = ['nombre', 'precio']
 
-   if req.method == 'POST':
-
-    mi_form = ProductForm(req.POST)
-
-    if mi_form.is_valid():
-     data = mi_form.cleaned_data
-
-     producto = Producto(nombre= data['producto'], precio= data['precio'])
-     producto.save()
- 
-     return render(req, "inicio.html")
-    
-    else:
-       return render(req, "mi_form.html")
-   
-   else:
-      mi_form = ProductForm()
-      return render(req, 'add_form.html', { 'mi_form':mi_form })
    
 def busqueda_producto(req):
    return render(req, 'busqueda_producto.html')
@@ -43,39 +36,63 @@ def buscar_producto(req):
 
  return render(req, 'resultado_busqueda.html', { 'precio': precio, 'productos':productos })
 
-def read_product(req):
-  productos = Producto.objects.all()
+class ProductsListView(ListView):
+  model = Producto
+  context_object_name = 'productos'
+  template_name= 'leer_productos.html'
 
-  return render(req, 'leer_productos.html', {'productos':productos})
 
-def borrar_producto(req, producto_nombre):
-   producto = Producto.objects.get(nombre=producto_nombre)
-   producto.delete()
-   
-   productos = Producto.objects.all()
 
-   return render(req, 'leer_productos.html' , {'productos':productos})
+class ProductDeleteView(LoginRequiredMixin ,DeleteView):
+  model = Producto
+  template_name = 'eliminar_producto.html'
+  success_url = reverse_lazy('leer-producto')
 
-def edit_products(req, producto_nombre):
-  
-  producto = Producto.objects.get(nombre=producto_nombre)
 
+class ProductUpdateView(LoginRequiredMixin, UpdateView):
+  model = Producto
+  template_name = 'editar_producto.html'
+  success_url = reverse_lazy('leer-producto')
+  fields = ['nombre', 'precio']
+      
+
+def user_login(req):
   if req.method == 'POST':
-    product_form = ProductForm(req.POST)
+    form = AuthenticationForm(req, data=req.POST)
 
-    if product_form.is_valid():
+    if form.is_valid():
+      username = form.cleaned_data.get('username')
+      password = form.cleaned_data.get('password')
 
-      info = product_form.cleaned_data
+      user = authenticate(username=username, password=password)
 
-      producto.nombre = info['producto']
-      producto.precio = info['precio']
+      if user is not None:
+        auth_login(req, user)
+        return render(req, 'inicio.html', {'mensaje': f'Bienvenido {username}'})
       
-      producto.save()
-
-      return render(req, 'inicio.html')
-  else:
-    product_form = ProductForm(initial={'producto': producto.nombre, 'precio':producto.precio})
-
-
-    return render(req, 'editar_producto.html', {'product_form':product_form, 'producto_nombre':producto_nombre})
+      else:
+        return render(req, 'login.html', {'mensaje': 'Error, datos incorrectos'})
       
+    else:
+      return render(req, 'login.html' , {'mensaje': 'Error, formulario incorrecto'})
+   
+  form = AuthenticationForm()
+  return render(req, 'login.html', {'form':form})
+
+def register(req):
+  if req.method == 'POST':
+    
+      form = UserRegistrationForm(req.POST)
+      if form.is_valid():
+        
+          username = form.cleaned_data['username']
+          form.save()
+          return render(req, 'inicio.html', {'mensaje':'Usuario Creado'})
+      else:
+         return render(req, 'registro.html', {'form': form, 'mensaje': 'Error en el formulario'})
+
+      
+  else: 
+   form = UserRegistrationForm()
+
+  return render(req,'registro.html', {'form':form})

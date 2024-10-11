@@ -83,6 +83,39 @@ list-style: none;
     text-align: center;
  }
 
+/* Inicio Container */
+.inicio-container{
+    display: flex;
+    height: 80vh;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    margin-top: 10px; 
+
+    
+}
+
+/* Login Form */
+.login-form{
+    display: flex;
+    height: 80vh;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    margin-top: 10px; 
+    gap: 10px;
+}
+
+/* Register Form */
+.register-form{
+display: flex;
+height: 80vh;
+flex-direction: column;
+align-items: center;
+justify-content: flex-start;
+margin-top: 10px; 
+gap: 10px;
+}
 
 
 /* Agregar Producto */
@@ -146,7 +179,7 @@ input{
 }
 
 
-button{
+.button{
     width: 100px;
     border: 0;
     border-radius: 10px;
@@ -154,12 +187,26 @@ button{
     cursor: pointer;
 }
 
-button:hover{
+.button:hover{
     background-color: rgba(128, 128, 128, 0.5);
 }
 
+.btn-logout{
+    color: black;
+    background-color: transparent;
+    border: none;
+    font-size: 15px;
+    cursor: pointer;
+}
 
+.btn-logout:hover{
+    transition: all;
+    color: white;
+}
 
+.div-msj-inicio{
+    margin-bottom: 10px;
+}
 
 
 footer{

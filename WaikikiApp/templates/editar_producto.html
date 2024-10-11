@@ -5,15 +5,16 @@
 {% block contenido %}
 
 <main class='add-product-container'>    
-    <form class='form' action="{% url 'editar-producto' producto_nombre %}" method="post">{% csrf_token %}
+    <form class='form' action="{% url 'editar-producto' producto.pk %}" method="POST">
+        {% csrf_token %}
         
         <div>
             
-        {{product_form.as_p}}
+        {{form.as_p}}
 
         </div>
         
-        <button type="submit">Editar</button>
+        <button class='button' type="submit">Editar</button>
     </form>
 </main>
     

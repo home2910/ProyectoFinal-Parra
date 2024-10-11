@@ -32,6 +32,18 @@
                 <li class='li'>
                     <a class='a' href="{% url 'busqueda-producto' %}">Buscar Producto</a>
                 </li>
+                <li class='li'>
+                    <a class='a' href="{% url 'login' %}">Iniciar Sesión</a>
+                </li>
+                <li class='li'>
+                    <a class='a' href="{% url 'register' %}">Registrarse</a>
+                </li>
+                <li class='li'>
+                    <form action="{% url 'logout' %}" method='POST'>
+                        {% csrf_token %}
+                     <button class='btn-logout' type='submit'>Cerrar Sesión</button>
+                    </form>
+                </li>
             </ul>
         </nav>
 

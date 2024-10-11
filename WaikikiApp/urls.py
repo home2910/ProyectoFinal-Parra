@@ -14,18 +14,22 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+
 from django.contrib import admin
 from django.urls import path
-from .views import inicio, add_form, busqueda_producto, buscar_producto, read_product, borrar_producto,edit_products
-
+from django.contrib.auth.views import LogoutView
+from .views import inicio, busqueda_producto, buscar_producto, user_login, register, ProductsListView, ProductCreateView, ProductUpdateView, ProductDeleteView
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('Inicio/', inicio, name='inicio'),
-    path('Agregar-producto/', add_form, name='agg'),
+    path('', inicio, name='inicio'),
+    path('Agregar-producto/', ProductCreateView.as_view(), name='agg'),
     path('Busqueda-producto/', busqueda_producto, name='busqueda-producto'),
     path('Buscar-producto/', buscar_producto, name='buscar-producto'),
-    path('Leer-productos/', read_product, name='leer-producto'),
-    path('Borrar-productos/<producto_nombre>', borrar_producto, name='eliminar-producto'),
-    path('Actualizar_producto/<producto_nombre>', edit_products, name='editar-producto'),
+    path('Leer-productos/', ProductsListView.as_view(), name='leer-producto'),
+    path('Borrar-productos/<int:pk>/delete', ProductDeleteView.as_view(), name='eliminar-producto'),
+    path('Actualizar_producto/<int:pk>/update', ProductUpdateView.as_view(), name='editar-producto'),
+    path('login/', user_login, name='login' ),
+    path('register/', register, name='register'),
+    path('logout/', LogoutView.as_view(template_name='logout.html'), name='logout'),
 ]
   

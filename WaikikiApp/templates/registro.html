@@ -1,0 +1,17 @@
+{% extends "padre.html" %}
+
+
+{% block contenido %}
+    
+<form class='register-form' action="" method='POST'>
+
+    {% csrf_token %}
+    {{form.as_p}}
+    <button class='button' type='submit'>Registrarse</button>
+
+    
+</form>
+{{mensaje}}
+
+{% endblock contenido %}
+    

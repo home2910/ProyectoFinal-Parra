@@ -10,12 +10,12 @@
         {% for p in productos %}
         
         <li>{{p}}</li>
-        <button>
+        <button class='button'>
 
-            <a style='text-decoration:none; color:black ;' href="{% url 'eliminar-producto' p.nombre %}">Eliminar</a>
+            <a style='text-decoration:none; color:black ;' href="{% url 'eliminar-producto' p.pk %}">Eliminar</a>
         </button>
-        <button>
-            <a style='text-decoration:none; color:black ;' href="{% url 'editar-producto' p.nombre %}">Editar</a>
+        <button class='button'>
+            <a style='text-decoration:none; color:black ;' href="{% url 'editar-producto' p.pk %}">Editar</a>
         </button>
         
         {% endfor %}

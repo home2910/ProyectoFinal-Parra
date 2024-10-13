@@ -2,17 +2,24 @@
 
 
 {% block contenido %}
-<main class='inicio-container'>
-    <div class='div-msj-inicio'>
-  
-       <h2>{{mensaje}}</h2> 
-    </div>
+<main class='main-container'>
 
+    
     <header class='inicio-header'>   
         <h3>Un espacio para comer y disfrutar en familia!</h3>
         <p>Acercate a nuestro local y disfruta de nuestras nuestra gran seleccion de desayunos y meriendas</p>
     </header>
+    
+    <div>
 
+        {% if url %}
+        <img src="{{ url }}" alt="Avatar">
+    {% else %}
+        <img src="/media/avatares/default_avatar.png" alt="Avatar predeterminado">
+    {% endif %}
+
+        <p>Que bueno verte {{user.username}}</p>
+    </div>
 
 </main>
 

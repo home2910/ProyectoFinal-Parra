@@ -1,0 +1,19 @@
+{% extends "padre.html" %}
+
+
+{% block contenido %}
+<main class='main-container'>    
+    <form method="post">
+        {% csrf_token %}
+        <div>
+            
+        {{miForm.as_p}}
+
+        </div>
+        
+        <button class='button' type="submit">Actualizar</button>
+    </form>
+</main>
+
+{% endblock contenido %}
+    

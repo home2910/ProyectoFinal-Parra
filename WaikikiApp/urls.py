@@ -18,7 +18,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from django.contrib.auth.views import LogoutView
-from .views import inicio, busqueda_producto, buscar_producto, user_login, register, ProductsListView, ProductCreateView, ProductUpdateView, ProductDeleteView
+from .views import inicio, busqueda_producto, buscar_producto, user_login, register, ProductsListView, ProductCreateView, ProductUpdateView, ProductDeleteView, editar_perfil, agregar_avatar, about_me
+from django.conf import settings
+from django.conf.urls.static import static
+
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', inicio, name='inicio'),
@@ -31,5 +35,10 @@ urlpatterns = [
     path('login/', user_login, name='login' ),
     path('register/', register, name='register'),
     path('logout/', LogoutView.as_view(template_name='logout.html'), name='logout'),
+    path('Editar-Perfil/', editar_perfil, name='editar-perfil'),\
+    path('Agregar-avatar/', agregar_avatar, name='agregar-avatar'),
+    path('Sobre-mi/', about_me, name='about-me')
 ]
   
+
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

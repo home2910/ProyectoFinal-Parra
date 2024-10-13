@@ -21,6 +21,10 @@
         <nav>
             <ul class='navigation'>
                 <li class='li'>
+                    <a class='a' style='background-color: #0009; border-radius:10px; padding:5px;' href="{% url 'about-me' %}"> Sobre Mi </a>
+                </li>
+                
+                <li class='li'>
                     <a class='a' href="{% url 'inicio' %}">Inicio</a>
                 </li>
                 <li class='li'>
@@ -32,18 +36,36 @@
                 <li class='li'>
                     <a class='a' href="{% url 'busqueda-producto' %}">Buscar Producto</a>
                 </li>
+                
+                {% if not request.user.is_authenticated %}    
                 <li class='li'>
                     <a class='a' href="{% url 'login' %}">Iniciar Sesión</a>
                 </li>
                 <li class='li'>
                     <a class='a' href="{% url 'register' %}">Registrarse</a>
                 </li>
-                <li class='li'>
-                    <form action="{% url 'logout' %}" method='POST'>
-                        {% csrf_token %}
-                     <button class='btn-logout' type='submit'>Cerrar Sesión</button>
-                    </form>
-                </li>
+                {% endif %}
+                
+
+                {% if request.user.is_authenticated %}
+                
+                <section class='user-logout-section'>
+                    <li class='li'>
+                     <a class='a' style='color:white;' href="{% url 'agregar-avatar' %}">Agregar Avatar</a>
+                    </li>
+
+                    <p class="p-inicio-sesion">Hola, {{user.username}}</p>
+                    
+                    <li class='li'>
+                        <form action="{% url 'logout' %}" method='POST'>
+                            {% csrf_token %}
+                            <button style='color:white;' class='btn-logout' type='submit'>Cerrar Sesión</button>
+                        </form>
+                    </li>
+                </section>
+                {% endif %}
+                    
+                
             </ul>
         </nav>
 

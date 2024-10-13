@@ -4,7 +4,7 @@
 
 {% block contenido %}
 
-<main class='add-product-container'>    
+<main class='main-container'>    
     <form class='form' action="{% url 'editar-producto' producto.pk %}" method="POST">
         {% csrf_token %}
         
